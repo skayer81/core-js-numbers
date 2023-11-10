@@ -417,7 +417,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return Number(number);
+  return Number.isFinite(number);
 }
 
 /**
@@ -432,7 +432,7 @@ function isNumber(number) {
  * '5'  => false
  */
 function isInteger(number) {
-  return number; // typeof number === 'Number' && number === Math.trunc(number);
+  return number === Math.trunc(number); // typeof number === 'Number' && number === Math.trunc(number);
 }
 
 /**
@@ -446,7 +446,13 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  return str.split().reduce((sum, elem) => (Number(elem) ? sum + elem : sum));
+  // const result = str
+  //   .split('')
+  //   .reduce(
+  //     (sum, elem) => (Number(elem) || elem === '.' ? sum + elem : sum),
+  //     ''
+  //   );
+  return Number.parseFloat(str);
 }
 
 /**
@@ -464,7 +470,7 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  return Number(Number(str).toString(base));
+  return Number.parseInt(str, base);
 }
 
 /**
@@ -478,8 +484,8 @@ function getIntegerOnString(str, base) {
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger(/* number */) {
-  throw new Error('Not implemented');
+function isSafeInteger(number) {
+  return Number.isSafeInteger(number);
 }
 
 /**
@@ -553,7 +559,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return (x1 + x2 + x3).toFixed(5).parseNumberFromString();
+  return Number((x1 + x2 + x3).toFixed(5));
 }
 
 /**
@@ -599,7 +605,7 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  return (a ** 2 + b ** 2) ** 0.5;
+  return Math.hypot(a, b); // (a ** 2 + b ** 2) ** 0.5;
 }
 
 /**
@@ -616,7 +622,7 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  return Math.round(number / 2);
+  return Math.round(Math.abs(number) / 2);
 }
 
 module.exports = {
