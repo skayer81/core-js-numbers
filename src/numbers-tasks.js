@@ -398,7 +398,7 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  return number;
+  return number.valueOf();
 }
 
 /**
@@ -432,7 +432,7 @@ function isNumber(number) {
  * '5'  => false
  */
 function isInteger(number) {
-  return number === Math.trunc(number); // typeof number === 'Number' && number === Math.trunc(number);
+  return Number.isInteger(number); // typeof number === 'Number' && number === Math.trunc(number);
 }
 
 /**
@@ -575,7 +575,7 @@ function getSumOfNumbers(x1, x2, x3) {
  * 0, 5   => 5
  */
 function getMaxNumber(firstNumber, secondNumber) {
-  return firstNumber > secondNumber ? firstNumber : secondNumber;
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
@@ -591,7 +591,7 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
