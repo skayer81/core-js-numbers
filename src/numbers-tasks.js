@@ -104,7 +104,6 @@ function getLinearEquationRoot(a = 1, b = 0) {
  *   (0,1) (0,-1)    => π
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
- *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
   return [Math.PI, Math.PI / 2, 0][
