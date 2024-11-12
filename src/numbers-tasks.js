@@ -431,7 +431,7 @@ function isNumber(number) {
  * '5'  => false
  */
 function isInteger(number) {
-  return Number.isInteger(number); // typeof number === 'Number' && number === Math.trunc(number);
+  return Number.isInteger(number);
 }
 
 /**
@@ -445,12 +445,6 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  // const result = str
-  //   .split('')
-  //   .reduce(
-  //     (sum, elem) => (Number(elem) || elem === '.' ? sum + elem : sum),
-  //     ''
-  //   );
   return Number.parseFloat(str);
 }
 
@@ -604,7 +598,7 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  return Math.hypot(a, b); // (a ** 2 + b ** 2) ** 0.5;
+  return Math.hypot(a, b);
 }
 
 /**
